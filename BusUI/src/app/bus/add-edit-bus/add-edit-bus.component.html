@@ -1,0 +1,38 @@
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Bus Plate</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="BusPlate" placeholder="Enter Plate number">
+    </div>
+    <label class="col-sm-2 col-form-label">From</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="BusFrom" placeholder="Enter Start location">
+    </div>
+    <label class="col-sm-2 col-form-label">To</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="BusTo" placeholder="Enter Destination">
+    </div>
+    <label class="col-sm-2 col-form-label">Start Time</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="StartAt" placeholder="Enter Start Time">
+    </div>
+    <label class="col-sm-2 col-form-label">Seat Type</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="SeatType" placeholder="Enter Seat Type">
+    </div>
+    <label class="col-sm-2 col-form-label">Seat Number</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="SeatNumber" placeholder="Enter Seat number">
+    </div>
+    <label class="col-sm-2 col-form-label">Seat Available</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="SeatAvail" placeholder="Enter Seat Available number">
+    </div>
+</div>
+
+<button (click)="addBus()" *ngIf="bus.BusId==0" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateBus()" *ngIf="bus.BusId!=0" class="btn btn-primary">
+    Update
+</button>

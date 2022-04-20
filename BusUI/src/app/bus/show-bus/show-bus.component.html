@@ -1,0 +1,82 @@
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+(click)="addClick()">
+    Add Bus
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{ModalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"></button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit-bus [bus]="bus" *ngIf="ActivateAddEditBusComp"></app-add-edit-bus>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BusIdFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              BusId</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BusPlateFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              Bus Plate</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BusFromFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              From</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BusToFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              To</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="StartAtFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              Start Time</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="SeatTypeFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              Seat Type</th>
+            <th>Seat Number</th>
+            <th>Seat Available</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let bus of BusList">
+            <td>{{bus.BusId}}</td>
+            <td>{{bus.BusPlate}}</td>
+            <td>{{bus.BusFrom}}</td>
+            <td>{{bus.BusTo}}</td>
+            <td>{{bus.StartAt}}</td>
+            <td>{{bus.SeatType}}</td>
+            <td>{{bus.SeatNumber}}</td>
+            <td>{{bus.SeatAvail}}</td>
+            <td>
+                <button type="button" class="btn btn-light mr-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                (click)="editClick(bus)">Edit</button>
+                <button type="button" class="btn btn-light mr-1"
+                (click)="deleteClick(bus)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+>

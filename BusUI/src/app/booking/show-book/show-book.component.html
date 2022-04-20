@@ -1,0 +1,80 @@
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+(click)="addClick()">
+    Add Booking
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{ModalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"></button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit-book [book]="book" *ngIf="ActivateAddEditBookComp"></app-add-edit-book>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BookIdFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              Booking ID</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="FirstNameFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              First Name</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="LastNameFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              Last Name</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="EmailFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              Email</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BusIdFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              Bus ID</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BookDateFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+              </div>
+              Date</th>
+            <th>Seat(s) Booked</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of BookList">
+            <td>{{book.BookId}}</td>
+            <td>{{book.FirstName}}</td>
+            <td>{{book.LastName}}</td>
+            <td>{{book.Email}}</td>
+            <td>{{book.BusId}}</td>
+            <td>{{book.BookDate}}</td>
+            <td>{{book.NumberOfSeat}}</td>
+            <td>
+                <button type="button" class="btn btn-light mr-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                (click)="editClick(book)">Edit</button>
+                <button type="button" class="btn btn-light mr-1"
+                (click)="deleteClick(book)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+>

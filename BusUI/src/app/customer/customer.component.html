@@ -1,0 +1,127 @@
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+        (click)="closeClick()"></button>
+    </div>
+    <div class="modal-body">
+        <!-- Modal pop up -->
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="FirstName" placeholder="Enter First Name">
+        </div>
+        <label class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="LastName" placeholder="Enter Last Name">
+        </div>
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="Email" placeholder="Enter Email">
+        </div>
+        <label class="col-sm-2 col-form-label">Bus Id</label>
+        <div class="col-sm-10">
+            <p>{{BusId}}</p>
+        </div>
+        <label class="col-sm-2 col-form-label">Book date</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="BookDate" placeholder="Enter Booking Date">
+        </div>
+        <label class="col-sm-2 col-form-label">Seat(s) Booked</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="NumberOfSeat" placeholder="Enter number of Seat(s) Booked">
+        </div>
+        </div>
+        <button (click)="addBook()" class="btn btn-primary">
+            Confirm
+        </button>
+    </div>
+    </div>
+</div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <h2>Start Booking</h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Enter your starting location and destination below:</p>
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <span class="badge bg-primary">Starting Location</span>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BusFromFilter" class="form-control" (keyup)="FilterFn()" placeholder="Enter Location">
+              </div>
+            </li>
+            <li class="nav-item">
+              <span class="badge bg-primary">Destination</span>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="BusToFilter" class="form-control" (keyup)="FilterFn()" placeholder="Enter Location">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <h3 class="mt-4">About Us</h3>
+      <img src="../../assets/images/BusIcon.png" alt="Test Image">
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+    </div>
+    <div class="col-sm-8">
+      <h2>RESULT</h2>
+      <!-- Table Display -->
+      <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                  BusId</th>
+                <th>
+                  Bus Plate</th>
+                <th>
+                  From</th>
+                <th>
+                  To</th>
+                <th>
+                  Start Time</th>
+                <th>
+                  Seat Type</th>
+                <th>Seat Number</th>
+                <th>Seat Available</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bus of BusList">
+                <td>{{bus.BusId}}</td>
+                <td>{{bus.BusPlate}}</td>
+                <td>{{bus.BusFrom}}</td>
+                <td>{{bus.BusTo}}</td>
+                <td>{{bus.StartAt}}</td>
+                <td>{{bus.SeatType}}</td>
+                <td>{{bus.SeatNumber}}</td>
+                <td>{{bus.SeatAvail}}</td>
+                <td>
+                    <button type="button" class="btn btn-light mr-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                    (click)="selectClick(bus)">Select</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+
+      <h2 class="mt-5">HIGHLIGHTS</h2>
+      <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape"/>
+      <p>Some <i>description</i> text...</p>
+      <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>
+      <p>Some <i>description</i> text...</p>
+      <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>
+      <p>Some <i>description</i> text...</p>
+    </div>
+  </div>
+</div>
